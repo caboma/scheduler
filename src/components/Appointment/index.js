@@ -8,13 +8,15 @@ export default function Appointment(props) {
   if(props.interview){
     return (
       <article className="appointment">
-         {props.time}<Header />
-        <Show />
+        {props.time}
+        <Header  />
+        <Show {...props.interview} />
       </article>
     )
   } else {
     return (
       <article className="appointment"> 
+        {props.time}
         <Header />
         <Empty />
       </article>)
