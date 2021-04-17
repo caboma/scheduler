@@ -3,8 +3,8 @@ import axios from "axios";
 import "components/Application.scss";
 import DayList from "components/DayList";
 import Appointment from "components/Appointment";
-import getAppointmentsForDay from "helpers/selectors";
-import getInterview from "helpers/getInterview";
+import {getAppointmentsForDay, getInterview} from "helpers/selectors";
+
 
 export default function Application(props) {
   
@@ -31,11 +31,13 @@ export default function Application(props) {
     })
   },[]);
   
+  //get all appointments in a particular day
   const appointments = getAppointmentsForDay(state, state.day);
 
+  //create interview array from the appointments
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
-    
+  
     return (
       <Appointment
         key={appointment.id}
@@ -45,7 +47,7 @@ export default function Application(props) {
       />
     );
   });
-
+  
   return (
     <main className="layout">
       <section className="sidebar">
