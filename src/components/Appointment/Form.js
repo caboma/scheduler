@@ -9,11 +9,14 @@ import Button from "components/Button";
     const reset = () => {
       setName("")
       setInterviewer(null)
-    }
+    };
     const cancel = () => {
       props.onCancel(reset())
-    }
-    
+    };
+    const save = () => {
+      props.onSave(name, interviewer)
+    };
+
   return(
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -33,7 +36,7 @@ import Button from "components/Button";
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm >Save</Button>
+          <Button confirm onClick={save}>Save</Button>
         </section>
       </section>
     </main>

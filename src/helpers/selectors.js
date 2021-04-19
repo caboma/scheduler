@@ -19,12 +19,12 @@ export const getInterview = (state, interview) => {
   return interview
 }
 
-export const getInterviewersForDay = (state, interviewers) => {
+export const getInterviewersForDay = (state, day) => {
   
-  if(interviewers === null){
-    return null;
-  }
-  const [foundInterviewers] = Object.values(state.interviewers).filter(interviewer => interviewer.id === interviewers.interviewer);
-  interviewers = {...interviewers, ...foundInterviewers}
-  return interviewers
+  const filteredInterviewers = [];
+  state.days.forEach(sd => {if(sd.name === day){
+    sd.interviewers.forEach(interviewerId => filteredInterviewers.push(state.interviewers[interviewerId]))
+  }})
+  return filteredInterviewers
+  
 }
