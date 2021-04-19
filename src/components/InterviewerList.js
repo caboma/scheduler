@@ -4,7 +4,7 @@ import InterviewerListItem from "components/InterviewerListItem";
 import PropTypes from "prop-types";
 
 const InterviewerList = (props) => {
-  const parsedInterviewerList = Object.values(props.interviewers).map(interviewer => (
+  const parsedInterviewerList = props.interviewers.map(interviewer => (
     <InterviewerListItem  
       key={interviewer.id}
       name={interviewer.name} 

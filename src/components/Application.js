@@ -44,7 +44,17 @@ const Application = (props) => {
       ...state,
       appointments
     })
-    
+    return axios.put(`/api/appointments/${id}`, {interview})
+    .then(()=> {
+      setState({
+        ...state,
+        appointments
+      })
+    })
+  }
+
+  const cancelInterview = (id) => {
+    return axios.delete(`/api/appointments/${id}`)
   }
 
   //get all appointments in a particular day
@@ -64,10 +74,11 @@ const Application = (props) => {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
-  
+
   return (
     <main className="layout">
       <section className="sidebar">
