@@ -16,22 +16,25 @@ export default function Appointment(props) {
   const SAVING = "SAVING";
   const CONFIRM = "CONFIRM";
   const DELETING = "DELETING";
-  const EDIT = "EDIT"
+  const EDIT = "EDIT";
+  const ERROR_SAVE = "ERROR_SAVE";
+  const ERROR_DELETE = "ERROR_DELETE";
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-  console.log('from mode>>', mode)
+  
   //saving the new appointment by calling the bookInterview funciton and pass appointment id and interview object
   const save = async(name, interviewer) => {
     const interview = {
       student: name,
-      interviewer: interviewer
+      interviewer
     };
-    console.log('from interviewer', interviewer)
     transition(SAVING)
-    await props.bookInterview(props.id, interview)
-    transition(SHOW)
+    await props
+      .bookInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch(error => transition(ERROR_SAVE, true));
   }
 
   //to show the confirmation dialog
@@ -41,19 +44,20 @@ export default function Appointment(props) {
 
   //upon confirmation, call cancelInterview function to perform the delete using appointment id
   const cancel = async() => {
-    transition(DELETING)
-    await props.cancelInterview(props.id)
-    transition(EMPTY)
+    transition(DELETING, true)
+    await props
+      .cancelInterview(props.id)
+      .then(() => transition(EMPTY))
+      .catch(error => transition(ERROR_DELETE, true));
   }
   
   //Edit existing appoint
   const edit = () => {
     transition(EDIT)
-    console.log("props in edit", props)
   }
 
   return(
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       {props.time} <Header />
       {mode === EMPTY && 
         <Empty onAdd={ () => 
