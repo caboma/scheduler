@@ -1,7 +1,6 @@
 import React from "react";
 
-export default function Delete(props){
-
+const Delete = (props) => {
   return (
     <main className="appointment__card appointment__card--status">
       <img
@@ -11,5 +10,6 @@ export default function Delete(props){
       />
       <h1 className="text--semi-bold">{props.message}</h1>
     </main>
-  )
-}
+  );
+};
+export default Delete;

@@ -12,14 +12,13 @@ export default function useApplicationData() {
     
     const setDay = (day) => {
       setState(prev => ({...prev, day}));
-    }
+    };
   
     useEffect(() => {
       Promise.all([
         axios.get("/api/days"),
         axios.get("/api/appointments"),
         axios.get("/api/interviewers")
-        
       ])
       .then((all) => {
         setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
@@ -31,8 +30,8 @@ export default function useApplicationData() {
       const appointment = {
         ...state.appointments[id],
         interview: { ...interview },
-        
       };
+
       const appointments = {
         ...state.appointments,
         [id]: appointment
@@ -41,7 +40,7 @@ export default function useApplicationData() {
       setState({
         ...state,
         appointments
-      })
+      });
       
       return axios.put(`/api/appointments/${id}`, {interview})
       .then(()=> {
@@ -49,15 +48,15 @@ export default function useApplicationData() {
           ...state,
           appointments,
           days: updateSpots(appointments)
-        })
-      })
-    }
+        });
+      });
+    };
 
     //Updating the remaining spots upon adding or deleting appointment
     const updateSpots = (appointments) => {
-      const newState = {...state}
-      const currentDay = newState.days.find(day => day.name === state.day)
-      const listOfAppointmentsForADay = [...currentDay.appointments]
+      const newState = {...state};
+      const currentDay = newState.days.find(day => day.name === state.day);
+      const listOfAppointmentsForADay = [...currentDay.appointments];
   
       let numberOfSpots = 0
       for (const aptId of listOfAppointmentsForADay){
@@ -66,9 +65,9 @@ export default function useApplicationData() {
         }
       }
 
-      currentDay.spots = numberOfSpots
-      return newState.days
-    }
+      currentDay.spots = numberOfSpots;
+      return newState.days;
+    };
     
     /*******Cancels selected interview*******/
     //updating the state by removing the appointment to the state
@@ -87,6 +86,7 @@ export default function useApplicationData() {
         ...state,
         appointments
       })
+
       //deleting the appointment to database api
       return axios.delete(`/api/appointments/${id}`, {interview})
       .then(()=> {
@@ -94,9 +94,9 @@ export default function useApplicationData() {
           ...state,
           appointments,
           days: updateSpots(appointments)
-        })
-      })
-    }
+        });
+      });
+    };
 
   return { state, setDay, bookInterview, cancelInterview};  
-}
+};

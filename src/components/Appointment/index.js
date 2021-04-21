@@ -9,7 +9,7 @@ import Confirm from "components/Appointment/Confirm";
 import Delete from "components/Appointment/Delete";
 import useVisualMode from "hooks/useVisualMode";
 
-export default function Appointment(props) {
+const Appointment = (props) => {
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -103,3 +103,4 @@ export default function Appointment(props) {
     </article>
   )
 }
+export default Appointment;

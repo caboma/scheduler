@@ -21,6 +21,5 @@ const InterviewerList = (props) => {
       <ul className="interviewers__list">{parsedInterviewerList}</ul>
     </section>
   );
-}
-
+};
 export default InterviewerList;
