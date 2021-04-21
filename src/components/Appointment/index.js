@@ -37,7 +37,7 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_SAVE, true));
   }
 
-  //to show the confirmation dialog
+  //to show the delete confirmation dialog
   const confirm = () => {
     transition(CONFIRM)
   }
