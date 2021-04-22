@@ -44,14 +44,17 @@ npm run cypress
 - storybook
 
 ## Final Product
-!["Screenshot of Index Page - Mobile"](https://github.com/caboma/tweeter/blob/master/public/images/Mobile_Index.png)
 
-!["Screenshot of Index Page - Desktop"](https://github.com/caboma/tweeter/blob/master/public/images/index.png)
+!["Screenshot of Booked Appointment"](public/images/final_project/scheduler_page.png)
 
-!["Screenshot of visible New Tweet Form - Mobile"](https://github.com/caboma/tweeter/blob/master/public/images/Mobile_NewTweet_Form.png)
+!["Screenshot of Add New Appointment Form"](public/images/final_project/add_appointment.png)
 
-!["Screenshot of visible New Tweet Form - Desktop"](https://github.com/caboma/tweeter/blob/master/public/images/newTweet_Form.png)
+!["Screenshot of Edit Appointment"](public/images/final_project/edit_appointment.png)
 
-!["Screenshot of some Features (Button to Scroll Up / Hover in Tweet) - Mobile"](https://github.com/caboma/tweeter/blob/master/public/images/Mobile_Btn_ScrollUp.png)
+!["Screenshot of to Save New Appointment"](public/images/final_project/toSave_appointment.png)
 
-!["Screenshot of some Features (Button to Scroll Up / Hover in Tweet) - Desktop"](https://github.com/caboma/tweeter/blob/master/public/images/Btn_to_ScrollUp.png)
+!["Screenshot of Saving Progress"](public/images/final_project/progress_saving.png)
+
+!["Screenshot of Deleting Progress"](public/images/final_project/progress_deleting.png)
+
+!["Screenshot of Delete Confirmation Alert"](public/images/final_project/confirm_delete_appointment.png)
