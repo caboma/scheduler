@@ -7,6 +7,7 @@ import Form from "components/Appointment/Form";
 import Saving from "components/Appointment/Save"
 import Confirm from "components/Appointment/Confirm";
 import Delete from "components/Appointment/Delete";
+import Error from "components/Appointment/Error"
 import useVisualMode from "hooks/useVisualMode";
 
 const Appointment = (props) => {
@@ -48,7 +49,9 @@ const Appointment = (props) => {
     await props
       .cancelInterview(props.id)
       .then(() => transition(EMPTY))
-      .catch(error => transition(ERROR_DELETE, true));
+      .catch((error) => {
+        transition(ERROR_DELETE, true)
+      })
   }
   
   //Edit existing appoint
@@ -82,6 +85,11 @@ const Appointment = (props) => {
       {mode === SAVING && (
         <Saving message='Saving' />
       )}
+      {mode === ERROR_SAVE && (
+        <Error message='save'
+        onClose={back}
+        />
+      )}
       {mode === CONFIRM && (
         <Confirm 
           onConfirm={cancel}
@@ -90,6 +98,11 @@ const Appointment = (props) => {
       )}
       {mode === DELETING && (
         <Delete message='Deleting' />
+      )}
+      {mode === ERROR_DELETE && (
+        <Error message='delete'
+          onClose={back}
+        />
       )}
       {mode === EDIT && (
         <Form 
