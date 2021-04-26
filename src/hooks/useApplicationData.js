@@ -81,11 +81,6 @@ export default function useApplicationData() {
         ...state.appointments,
         [id]: appointment
       };
-      
-      setState({
-        ...state,
-        appointments
-      })
 
       //deleting the appointment to database api
       return axios.delete(`/api/appointments/${id}`, {interview})
